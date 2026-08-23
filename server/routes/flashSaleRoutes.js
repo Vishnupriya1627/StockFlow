@@ -15,7 +15,7 @@ const authMiddlewares = require("../middleware/authMiddlewares");
 const requireAdmin = require("../middleware/requireAdmin");
 const clientIdMiddleware = require("../middleware/clientIdMiddleware");
 const { flashSaleGate } = require("../middleware/flashSaleGate");
-const { resetFlashSaleState } = require("../controllers/flashSaleController");
+const {resetFlashSaleState } = require("../controllers/flashSaleController");
 
 router.get("/active/list", getActiveDrops);
 
