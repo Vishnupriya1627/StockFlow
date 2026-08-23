@@ -1,11 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000',
   withCredentials: true,
 });
 
-// Attaches the JWT from wherever your login flow stores it (adjust key if different)
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {

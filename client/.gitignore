@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 db_pass.txt
+.env.local
 
 # Editor directories and files
 .vscode/*
