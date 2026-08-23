@@ -10,15 +10,19 @@ const Redis = require('ioredis');
 
 const CHANNEL = 'queue:promotions';
 
-const REDIS_CONFIG = {
-    host: process.env.REDIS_HOST || '127.0.0.1',
-    port: process.env.REDIS_PORT || 6379,
-};
+function createRedisConnection() {
+    return process.env.REDIS_URL
+        ? new Redis(process.env.REDIS_URL)
+        : new Redis({
+            host: process.env.REDIS_HOST || '127.0.0.1',
+            port: process.env.REDIS_PORT || 6379,
+        });
+}
 
 // Independent connections — pub/sub should never share a connection
 // with normal Redis commands (a subscribed connection can't run GET/SET/etc).
-const publisherClient = new Redis(REDIS_CONFIG);
-const subscriberClient = new Redis(REDIS_CONFIG);
+const publisherClient = createRedisConnection();
+const subscriberClient = createRedisConnection();
 
 publisherClient.on('error', (err) => console.error('[PUBSUB] Publisher error:', err));
 subscriberClient.on('error', (err) => console.error('[PUBSUB] Subscriber error:', err));
