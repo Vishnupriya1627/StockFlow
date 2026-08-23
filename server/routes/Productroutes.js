@@ -8,7 +8,7 @@ const {
     adjustStock,
     getProductStockHistory,
     getProductMovements
-} = require('../controllers/productcontroller');
+} = require('../controllers/Productcontroller');
 const authMiddlewares = require('../middleware/authMiddlewares');
 const requireAdmin = require('../middleware/requireAdmin');
 const router = express.Router();

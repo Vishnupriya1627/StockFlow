@@ -9,7 +9,7 @@ const {
 
 const Product = require("../models/Productmodel");
 const Order = require("../models/Ordermodel");
-const StockMovement = require("../models/stockMovementModel");
+const StockMovement = require("../models/stockmovementmodel");
 
 const { releaseBuyerAndPromote } = require("../services/flashSalePipeline");
 

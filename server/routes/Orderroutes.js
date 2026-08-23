@@ -4,7 +4,7 @@ const {
     getAllOrders,
     getOrderById,
     updateOrderStatus
-} = require('../controllers/ordercontroller');
+} = require('../controllers/Ordercontroller');
 const authMiddlewares = require('../middleware/authMiddlewares');
 const router = express.Router();
 

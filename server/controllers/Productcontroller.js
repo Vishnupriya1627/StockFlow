@@ -1,6 +1,6 @@
-const Product = require('../models/productModel');
-const StockMovement = require('../models/stockmovementmodel');
-const Alert = require('../models/alertModel');
+const Product = require('../models/Productmodel');  
+const Alert = require('../models/Alertmodel');      
+const StockMovement = require('../models/stockmovementmodel'); 
 
 exports.createProduct = async (req, res) => {
     const { name, sku, category, description, unitPrice, currentStock, reorderThreshold, overstockThreshold, warehouseLocation, imageUrl, supplier } = req.body;

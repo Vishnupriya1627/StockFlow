@@ -1,7 +1,7 @@
-const Order = require('../models/orderModel');
-const Product = require('../models/productModel');
+const Order = require('../models/Ordermodel');     
+const Product = require('../models/Productmodel'); 
+const Alert = require('../models/Alertmodel'); 
 const StockMovement = require('../models/stockmovementmodel');
-const Alert = require('../models/alertModel');
 
 // Generates a simple sequential-looking order number, e.g. ORD-000123
 const generateOrderNumber = async () => {

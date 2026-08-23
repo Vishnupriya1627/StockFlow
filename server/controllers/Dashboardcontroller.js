@@ -1,7 +1,7 @@
-const Product = require('../models/ProductModel');
-const Order = require('../models/orderModel');
+const Product = require('../models/Productmodel'); 
+const Order = require('../models/Ordermodel'); 
 const StockMovement = require('../models/stockmovementmodel');
-const Alert = require('../models/alertModel');
+const Alert = require('../models/Alertmodel');    
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
