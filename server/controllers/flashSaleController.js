@@ -117,6 +117,38 @@ async function buyFlashSaleItem(req, res) {
   }
 }
 
+
+
+async function resetFlashSaleState(req, res) {
+  const { productId } = req.params;
+  const { stock } = req.body;
+
+  if (!stock) {
+    return res.status(400).json({ success: false, reason: 'STOCK_REQUIRED' });
+  }
+
+  try {
+    await redis.del(`active-buyers:${productId}`);
+    await redis.del(`waiting-room:${productId}`);
+
+    const reservationKeys = await redis.keys(`reservation:*:${productId}`);
+    if (reservationKeys.length > 0) {
+      await redis.del(...reservationKeys);
+      await redis.zrem('reservations:expiry', ...reservationKeys);
+    }
+
+    await redis.del(`stats:${productId}:requests`);
+    await redis.del(`stats:${productId}:oversell_blocked`);
+
+    await redis.set(`product:${productId}:stock`, Number(stock));
+
+    return res.status(200).json({ success: true, message: `Reset complete, stock set to ${stock}` });
+  } catch (err) {
+    console.error('resetFlashSaleState error:', err);
+    return res.status(500).json({ success: false, reason: 'SERVER_ERROR' });
+  }
+}
+
 // --------------------------------------------------
 // GET FLASH SALE STOCK
 // --------------------------------------------------

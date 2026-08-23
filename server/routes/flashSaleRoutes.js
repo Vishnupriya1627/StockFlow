@@ -15,6 +15,7 @@ const authMiddlewares = require("../middleware/authMiddlewares");
 const requireAdmin = require("../middleware/requireAdmin");
 const clientIdMiddleware = require("../middleware/clientIdMiddleware");
 const { flashSaleGate } = require("../middleware/flashSaleGate");
+const { resetFlashSaleState } = require("../controllers/flashSaleController");
 
 router.get("/active/list", getActiveDrops);
 
@@ -36,6 +37,13 @@ router.post(
   authMiddlewares,
   requireAdmin,
   simulateLoad,
+);
+
+router.post(
+  "/:productId/reset",
+  authMiddlewares,
+  requireAdmin,
+  resetFlashSaleState,
 );
 
 module.exports = router;
