@@ -1,0 +1,131 @@
+.active-drops-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+.active-drops-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.active-drops-header h1 {
+    font-size: 2.5rem;
+    color: #013f46;
+    margin-bottom: 8px;
+}
+
+.active-drops-header p {
+    color: #5a6b6d;
+    font-size: 1.05rem;
+}
+
+.drops-message {
+    text-align: center;
+    color: #5a6b6d;
+    padding: 40px 0;
+}
+
+.drops-error {
+    color: #b00020;
+}
+
+.drops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+.drop-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e6ebeb;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.drop-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(1, 63, 70, 0.12);
+}
+
+.drop-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #f4f6f6;
+}
+
+.drop-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.badge-live {
+    background: #f9b223;
+    color: #013f46;
+    animation: pulse 1.6s infinite;
+}
+
+.badge-ended {
+    background: #e6ebeb;
+    color: #5a6b6d;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+.drop-card-body {
+    padding: 16px;
+}
+
+.drop-card-body h3 {
+    font-size: 1.05rem;
+    color: #013f46;
+    margin: 0 0 6px;
+}
+
+.drop-price {
+    font-weight: 700;
+    color: #013f46;
+    margin: 0 0 10px;
+}
+
+.drop-status {
+    font-size: 0.9rem;
+    color: #5a6b6d;
+    margin: 0;
+}
+
+.drop-status-live {
+    color: #f9b223;
+    font-weight: 700;
+}
+
+.drop-status-ended {
+    color: #b00020;
+}
+
+.countdown {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+}

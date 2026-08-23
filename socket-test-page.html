@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flash Sale Socket Test</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #013f46;
+            color: white;
+            padding: 40px;
+        }
+        h1 { color: #f9b223; }
+        #status {
+            padding: 8px 14px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .connected { background: #2e7d32; }
+        .disconnected { background: #b00020; }
+        #stockDisplay {
+            font-size: 48px;
+            font-weight: bold;
+            color: #f9b223;
+            margin: 20px 0;
+        }
+        #log {
+            background: rgba(0,0,0,0.3);
+            padding: 16px;
+            border-radius: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .log-line { margin-bottom: 6px; }
+        input {
+            padding: 8px;
+            border-radius: 6px;
+            border: none;
+            margin-right: 8px;
+            width: 300px;
+        }
+        button {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            background: #f9b223;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flash Sale — Live Stock Watcher</h1>
+    <div id="status" class="disconnected">Connecting...</div>
+
+    <div>
+        <input id="productIdInput" placeholder="Paste your product _id here" />
+        <button onclick="watchProduct()">Watch This Product</button>
+    </div>
+
+    <div id="stockDisplay">— waiting for updates —</div>
+
+    <h3>Event Log</h3>
+    <div id="log"></div>
+
+    <!-- Loads the Socket.IO client straight from your running server -->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io('http://localhost:3000');
+        const statusEl = document.getElementById('status');
+        const stockEl = document.getElementById('stockDisplay');
+        const logEl = document.getElementById('log');
+
+        function log(msg) {
+            const line = document.createElement('div');
+            line.className = 'log-line';
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+            logEl.prepend(line);
+        }
+
+        socket.on('connect', () => {
+            statusEl.textContent = `Connected (${socket.id})`;
+            statusEl.className = 'connected';
+            log('Connected to server');
+        });
+
+        socket.on('disconnect', () => {
+            statusEl.textContent = 'Disconnected';
+            statusEl.className = 'disconnected';
+            log('Disconnected from server');
+        });
+
+        socket.on('stockUpdate', (data) => {
+            stockEl.textContent = `Stock: ${data.remainingStock}`;
+            log(`stockUpdate received → productId: ${data.productId}, remainingStock: ${data.remainingStock}`);
+        });
+
+        function watchProduct() {
+            const productId = document.getElementById('productIdInput').value.trim();
+            if (!productId) return;
+            socket.emit('watchProduct', productId);
+            log(`Joined room for product: ${productId}`);
+        }
+    </script>
+</body>
+</html>

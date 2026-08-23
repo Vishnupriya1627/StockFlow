@@ -1,0 +1,90 @@
+.sidebar-container {
+  background: #04161a;
+  color: #ffffff;
+  border-right: 1px solid #123a40;
+  box-shadow: 8px 0 35px rgba(0, 0, 0, 0.12);
+
+  background-image:
+    linear-gradient(
+      rgba(168, 196, 200, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(168, 196, 200, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 32px 32px;
+}
+
+.custom-nav-link {
+  color: #78999e;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.custom-nav-link span,
+.icons {
+  color: inherit;
+}
+
+.custom-nav-link:hover .icons {
+  transform: translateX(1px);
+}
+
+.icons {
+  transition: transform 0.2s ease;
+}
+
+.custom_p {
+  margin: 10px;
+  color: #405f64;
+}
+
+.custom_p_name {
+  height: 17px;
+}
+
+.img_logo {
+  margin: 0;
+}
+
+.div_cont {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger_btn {
+  margin: 0;
+}
+
+.hamburger_btn:hover {
+  background-color: #0a2c31;
+  cursor: pointer;
+}
+
+/* Scrollbar */
+
+.sidebar-nav {
+  scrollbar-width: thin;
+  scrollbar-color: #15434a transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: #15434a;
+  border-radius: 999px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background: #24606a;
+}

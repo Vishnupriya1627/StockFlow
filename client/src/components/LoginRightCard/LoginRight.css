@@ -1,0 +1,74 @@
+
+.loginBox {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#title {
+  color: white;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  padding: 14px;
+
+  background: #042a2e;
+  border: 1px solid #04555e;
+  border-radius: 8px;
+
+  color: white;
+  font-size: 14px;
+
+  outline: none;
+}
+
+.input:focus {
+  border-color: #a8a8a8;
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #f9b223;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.loginBtn:hover {
+  background: #ffaa00;
+}
+
+#seperator{
+  width: 100%;
+  height: 2px;
+  border-bottom:2px solid #04555e;
+}
+
+#signUp_btn{
+  all: unset;
+  cursor: pointer;
+}
+
+.signup{
+  font-size: 18px;
+}
+
+.passwordHint {
+  font-size: 0.75rem;
+  color: #aaaaaa;
+  margin: -6px 0 4px 4px;
+}

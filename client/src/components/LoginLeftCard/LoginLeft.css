@@ -1,0 +1,161 @@
+
+.logoArea {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 3;
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.logoText {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.bgChart {
+  position: absolute;
+  bottom: -20px;
+  left: -40px;
+  width: calc(100% + 80px);
+  height: 55%;
+  z-index: 1;
+  animation: driftChart 14s ease-in-out infinite;
+}
+
+@keyframes driftChart {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(15px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.statCard {
+  position: absolute;
+  width: 230px;
+  padding: 14px 16px;
+  background: rgba(4, 42, 46, 0.88);
+  border: 1px solid #0a565f;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 2;
+  opacity: 0;
+}
+
+.statDot {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  background: #f9b223;
+  box-shadow: 0 0 8px rgba(249, 178, 35, 0.7);
+}
+
+.dotGreen {
+  background: #2ecc71;
+  box-shadow: 0 0 8px rgba(46, 204, 113, 0.7);
+}
+
+.dotRed {
+  background: #ff5c5c;
+  box-shadow: 0 0 8px rgba(255, 92, 92, 0.7);
+}
+
+.statText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statLabel {
+  color: #9fb8bb;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.statValue {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card1 {
+  top: 30%;
+  left: 54%;
+  transform: rotate(-4deg);
+  animation: floatCard 12s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.card2 {
+  top: 50%;
+  left: 6%;
+  transform: rotate(3deg);
+  animation: floatCard 12s ease-in-out infinite;
+  animation-delay: 2.4s;
+}
+
+.card3 {
+  top: 68%;
+  left: 48%;
+  transform: rotate(-2deg);
+  animation: floatCard 12s ease-in-out infinite;
+  animation-delay: 4.8s;
+}
+
+.card4 {
+  top: 20%;
+  left: 10%;
+  transform: rotate(2deg);
+  animation: floatCard 12s ease-in-out infinite;
+  animation-delay: 7.2s;
+}
+
+.card5 {
+  top: 82%;
+  left: 20%;
+  transform: rotate(-3deg);
+  animation: floatCard 12s ease-in-out infinite;
+  animation-delay: 9.6s;
+}
+
+@keyframes floatCard {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  8% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  32% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  40% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
