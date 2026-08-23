@@ -4,8 +4,10 @@ const {
 } = require("../redis/queueClient");
 
 const { publishPromotion } = require("../redis/queuePubSub");
+const { redis } = require("../redis/redisClient");
+const { emitQueuePosition } = require("../socket/socketManager");
 
-const ACTIVE_CAPACITY = 50;
+const ACTIVE_CAPACITY = 2;
 
 // --------------------------------------------------
 // RELEASE ACTIVE BUYER + PROMOTE NEXT BUYERS
@@ -47,6 +49,23 @@ async function releaseBuyerAndPromote(productId, clientId) {
     }
 
     console.log(`[PIPELINE] Promotion complete. Promoted: ${promoted.length}`);
+
+    // --------------------------------------------------
+    // NOTIFY REMAINING WAITERS OF THEIR NEW POSITION
+    //
+    // Without this, a buyer's position freezes at whatever
+    // it was when they first joined the queue, even as
+    // people ahead of them get promoted.
+    // --------------------------------------------------
+
+    const queueKey = `waiting-room:${productId}`;
+    const stillWaiting = await redis.zrange(queueKey, 0, -1);
+
+    console.log(`[PIPELINE] Broadcasting positions to ${stillWaiting.length} waiting buyer(s)`);
+
+    for (let i = 0; i < stillWaiting.length; i++) {
+      emitQueuePosition(productId, stillWaiting[i], i + 1);
+    }
 
     return {
       released: true,
