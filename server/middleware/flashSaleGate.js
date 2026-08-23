@@ -1,6 +1,6 @@
 const { tryEnterFlashSale, getQueuePosition } = require("../redis/queueClient");
 
-const ACTIVE_CAPACITY = 2;
+const ACTIVE_CAPACITY = 50;
 
 async function flashSaleGate(req, res, next) {
   const { productId } = req.params;

@@ -7,7 +7,7 @@ const { publishPromotion } = require("../redis/queuePubSub");
 const { redis } = require("../redis/redisClient");
 const { emitQueuePosition } = require("../socket/socketManager");
 
-const ACTIVE_CAPACITY = 2;
+const ACTIVE_CAPACITY = 50;
 
 // --------------------------------------------------
 // RELEASE ACTIVE BUYER + PROMOTE NEXT BUYERS

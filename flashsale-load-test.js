@@ -10,7 +10,7 @@ export default function () {
   const buyUrl = `${__ENV.BASE_URL}/flashsale/${__ENV.PRODUCT_ID}/buy`;
   const checkoutUrl = `${__ENV.BASE_URL}/flashsale/${__ENV.PRODUCT_ID}/checkout`;
 
-  const MAX_POLL_ATTEMPTS = 20; // give up waiting after ~20 tries
+  const MAX_POLL_ATTEMPTS = 20;
   let attempts = 0;
   let bought = false;
 
@@ -22,12 +22,18 @@ export default function () {
     });
 
     if (buyRes.status === 200) {
-      // Successfully reserved — now actually complete checkout
       bought = true;
+      sleep(2);
 
-      sleep(2); // simulate a real user filling out checkout
+      const checkoutPayload = JSON.stringify({
+        customer: {
+          name: `k6-buyer-${__VU}-${__ITER}`,
+          email: `k6buyer${__VU}_${__ITER}@example.com`,
+          phone: '9999999999',
+        },
+      });
 
-      const checkoutRes = http.post(checkoutUrl, null, {
+      const checkoutRes = http.post(checkoutUrl, checkoutPayload, {
         headers: { 'Content-Type': 'application/json' },
       });
 
@@ -39,12 +45,10 @@ export default function () {
     }
 
     if (buyRes.status === 202) {
-      // In the waiting room — wait and try again
       sleep(1);
       continue;
     }
 
-    // Sold out, sale not live, or real error — stop trying
     check(buyRes, {
       'buy: got a terminal response': (r) => [404, 409, 500].includes(r.status),
     });
