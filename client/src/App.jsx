@@ -18,7 +18,7 @@ import Settings from "./components/Settings/Settings.jsx";
 import ActiveDrops from "./components/Drops/ActiveDrops.jsx";
 import DropDetail from "./components/Drops/DropDetail.jsx";
 import OpsDashboard from "./components/Dashboard/OpsDashboard.jsx";
-import LandingPage from "./components/Landing/LandingPage.jsx";
+import LandingPage from "./components/Landing/Landingpage.jsx";
 import { getActiveDrops } from "./api/flashSaleApi";
 import socket from "./socket";
 
