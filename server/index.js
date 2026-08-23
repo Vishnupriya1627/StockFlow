@@ -21,12 +21,11 @@ app.use(clientIdMiddleware);
 const userRoutes = require('./routes/userRoutes');
 app.use('/users',userRoutes);
 
-const productRoutes = require('./routes/productRoutes');
-const dashboardRoutes = require('./routes/dashboardRoutes');
+const productRoutes = require('./routes/Productroutes');
+const dashboardRoutes = require('./routes/Dashboardroutes');
+const orderRoutes = require('./routes/Orderroutes');
 app.use('/products', productRoutes);
 app.use('/dashboard', dashboardRoutes);
-
-const orderRoutes = require('./routes/orderRoutes');
 app.use('/orders', orderRoutes);
 
 
