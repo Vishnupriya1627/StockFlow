@@ -7,7 +7,8 @@ function clientIdMiddleware(req, res, next) {
         clientId = randomUUID();
         res.cookie('clientId', clientId, {
             httpOnly: true,       // JS on the frontend can't read/tamper with it
-            sameSite: 'lax',      // fine for localhost dev, revisit for production cross-site needs
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            secure: process.env.NODE_ENV === 'production', // required when sameSite is 'none'
             maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
         });
     }
