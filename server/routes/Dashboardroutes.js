@@ -4,7 +4,7 @@ const {
     getStockTrend,
     getCategoryBreakdown,
     getRecentActivity
-} = require('../controllers/dashboardController');
+} = require('../controllers/dashboardcontroller');
 const authMiddlewares = require('../middleware/authMiddlewares');
 const router = express.Router();
 
