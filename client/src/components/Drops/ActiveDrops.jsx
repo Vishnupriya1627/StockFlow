@@ -312,7 +312,7 @@ function DropCard({ drop }) {
                   {liveStock === null
                     ? "CHECKING..."
                     : liveStock > 0
-                      ? `${liveStock} LEFT`
+                      ? `IN STOCK`
                       : "OUT OF STOCK"}
                 </span>
               </div>
