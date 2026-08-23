@@ -8,7 +8,7 @@ import {
   getStockTrend,
   getCategoryBreakdown,
   getRecentActivity,
-} from "../../api/dashboardApi";
+} from "../../api/Dashboardapi";
 
 const buildKpiStats = (summary) => [
   {

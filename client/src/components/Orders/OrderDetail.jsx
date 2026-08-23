@@ -17,7 +17,7 @@ import {
 
 import StatusPill from "../common/StatusPill";
 import { getOrderById } from "../../api/ordersApi";
-import { formatDate, buildTimeline } from "../../utils/orderTransform";
+import { formatDate, buildTimeline } from "../../utils/Ordertransform";
 import { updateOrderStatus } from "../../api/ordersApi";
 
 const OrderDetail = () => {
