@@ -460,4 +460,6 @@ module.exports = {
   getDropStats,
 
   simulateLoad,
+
+  resetFlashSaleState
 };
