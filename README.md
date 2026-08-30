@@ -3,6 +3,8 @@
 A full-stack flash-sale system built after personally hitting three real bugs during a live e-commerce sale: false rate-limit rejections, overselling, and hanging checkouts. StockFlow solves all three using atomic Redis operations, TTL-based reservations, and a fair waiting-room queue — verified under real concurrent load with k6.
 
 **Live Demo:** https://stock-flow-nu-nine.vercel.app
+
+
 **Stack:** React (Vite), Node.js/Express, MongoDB, Redis, Socket.IO, k6
 
 ---
