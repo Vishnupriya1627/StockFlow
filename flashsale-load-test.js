@@ -1,16 +1,18 @@
+//k6 run -e BASE_URL=https://stockflow-q733.onrender.com -e PRODUCT_ID=yourProductId flashsale-load-test.js
+
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
 export const options = {
   vus: 100,
-  iterations: 300,
+  iterations: 400,
 };
 
 export default function () {
   const buyUrl = `${__ENV.BASE_URL}/flashsale/${__ENV.PRODUCT_ID}/buy`;
   const checkoutUrl = `${__ENV.BASE_URL}/flashsale/${__ENV.PRODUCT_ID}/checkout`;
 
-  const MAX_POLL_ATTEMPTS = 20;
+  const MAX_POLL_ATTEMPTS = 180;
   let attempts = 0;
   let bought = false;
 
